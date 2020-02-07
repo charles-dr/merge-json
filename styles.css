@@ -1,0 +1,30 @@
+.container {
+    display: block;
+    padding: 25px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    margin: 10px;
+    font-size: 16px;
+}
+
+.btn {
+    /* border: 1px solid red; */
+    border-radius: 7px;
+    padding: 5px 10px;
+    margin: 10px;
+}
+
+.btn-primary {
+    background-color: steelblue;
+}
+
+.btn-success {
+    background-color: green;
+}
+
+.btn-end {
+    background-color: red;
+}
