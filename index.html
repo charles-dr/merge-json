@@ -1,19 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>File Operation</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <input class="form-control" id="game-id" placeholder="Game ID"/>
+  </div>
+
+  <div class="path-section">
+    <div class="path-container">
+      <button class="btn path-browse" id="browse-watch">Watch Dir</button>
+      <input class="path-label" type="text" id="watch-dir">
+    </div>
+    <div class="path-container">
+      <button class="btn path-browse" id="browse-output">Output Dir</button>
+      <input class="path-label" type="text" id="output-dir">
+    </div>
+  </div>
+
+  <div class="container" id="form-container">
+    <div class="button-container">
+      <button id="startButton" class="btn btn-start">Start Watch</button>
+      <button id="endButton" class="btn btn-end">End Watch</button>
+    </div>
+
+    <!-- <div class="status-section">
+      <div class="form-group col-6">
+        <label>Status</label>
+        <textarea id="status" class="status-area" placeholder="File Contents..." rows="10"> </textarea>
+      </div>
+      <div class="form-group col-6">
+        <label>Watched Files</label>
+        <textarea id="watched" class="status-area" placeholder="File Contents..." rows="10"> </textarea>
+      </div>
+    </div> -->
+  </div>
+
+  <!-- You can also require other files to run in this process -->
+  <script src="./renderer.js"></script>
+</body>
+
 </html>

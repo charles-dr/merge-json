@@ -18,5 +18,11 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^8.0.0"
+  },
+  "dependencies": {
+    "chokidar": "^3.3.1",
+    "electron-reload": "^1.5.0",
+    "fs": "0.0.1-security",
+    "make-dir": "^3.0.0"
   }
 }
