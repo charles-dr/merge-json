@@ -68,6 +68,7 @@ function addHistory(message) {
     const textArea = document.getElementById('output');
     textArea.value = textArea.value + '\n' + message;
 }
+<<<<<<< HEAD
 
 function initialize() {
     setWatchDir(defaultWatchDir);
@@ -81,3 +82,5 @@ function setWatchDir(path) {
 function setOutputDir(path) {
     document.getElementById('output-dir').value = path;
 }
+=======
+>>>>>>> 48f04a9fd15081f89d0251e1599e4db8d9446166
