@@ -48,7 +48,7 @@ module.exports = class MergeJson {
 
     triggerWatch() {
 
-        var watcher = chokidar.watch(`${__dirname}/../${this.watchDir}`, {
+        var watcher = chokidar.watch(`${__dirname}/../${this.watchDir}/`, {
             ignored: /^\./,
             followSymlinks: false,
             usePolling: true,
@@ -58,20 +58,51 @@ module.exports = class MergeJson {
         });
         const outputPath = __dirname + `/../${this.outputDir}/${this.outputFile}`; // console.log('[output]', outputPath);
         let count = 0;
-
+        let watchedPaths = [];
         watcher
             .on('add', function (path) {
                 // addHistory('File ' +  path + ' has been added');
-                console.log('File ' + path + ' has been added', outputPath);
-                const data = fs.readFileSync(path, 'utf-8');
-                if (!data) {
-                    alert('An error occured reading the file.');
-                    return '';
+                console.log('[watch]', path);
+                let duplicated = false;               
+
+                if (watchedPaths.includes(path) === false) {
+                    watchedPaths.push(path);
+                    const data = fs.readFileSync(path, 'utf-8');
+                    if (!data) {
+                        alert('An error occured reading the file.');
+                        return '';
+                    }
+                    // this.addData(data);
+                    const content = count === 0 ? data : "," + data;
+                    fs.appendFileSync(outputPath, content);
+                    count++;
                 }
-                // this.addData(data);
-                const content = count === 0 ? data : "," + data;
-                fs.appendFileSync(outputPath, content);
-                count++;
+
+                // check path duplicated
+                // var watchedPaths = watcher.getWatched();
+                // console.log('[watchedPaths]', watchedPaths);
+
+                // for (let key in watchedPaths) {
+                //     if (watchedPaths[key] !== undefined) {
+                //         for (let relPath of watchedPaths[key]) {
+                //             const temp = `${key}\\${relPath}`;
+                //             if (path == temp) { duplicated = true; }
+                //         }
+                //     }
+                // }
+                // // ### check path duplicated
+                
+                // if (!duplicated) {
+                //     const data = fs.readFileSync(path, 'utf-8');
+                //     if (!data) {
+                //         alert('An error occured reading the file.');
+                //         return '';
+                //     }
+                //     // this.addData(data);
+                //     const content = count === 0 ? data : "," + data;
+                //     fs.appendFileSync(outputPath, content);
+                //     count++;
+                // }
             });
     }
 

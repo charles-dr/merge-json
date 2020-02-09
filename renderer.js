@@ -30,7 +30,7 @@ document.getElementById('watch-dir').onchange = () => {
     const path = document.getElementById('watch-dir').value;
     if (path !== undefined) {
         watchDir = path;
-        setWatchDir(document.getElementById('watch-dir').value);
+        setWatchDir(path);
     }
 }
 
@@ -39,7 +39,7 @@ document.getElementById('output-dir').onchange = () => {
     const path = document.getElementById('output-dir').value;
     if (path !== undefined) {
         outputDir = path;
-        setOutputDir(document.getElementById('output-dir').value);
+        setOutputDir(path);
     }
 }
 
@@ -68,9 +68,10 @@ function addHistory(message) {
     const textArea = document.getElementById('output');
     textArea.value = textArea.value + '\n' + message;
 }
-<<<<<<< HEAD
 
 function initialize() {
+    watchDir = defaultWatchDir;
+    outputDir = defaultOutputDir;
     setWatchDir(defaultWatchDir);
     setOutputDir(defaultOutputDir);
 }
@@ -82,5 +83,3 @@ function setWatchDir(path) {
 function setOutputDir(path) {
     document.getElementById('output-dir').value = path;
 }
-=======
->>>>>>> 48f04a9fd15081f89d0251e1599e4db8d9446166
